@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+
+<body class="flex flex-col">
+    <section class="hero-bg  flex flex-col relative">
+        <!-- Navigation -->
+        <nav class="m-4 px-4 py-1.5 backdrop-blur-sm bg-blue-50/25 rounded-full border border-white/20">
+            <div class="max-w-7xl mx-auto flex items-center justify-between text-white">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="size-6 bg-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">Travelly</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="landing.html" class="font-light hover:text-orange-300 transition-colors">Home</a>
+                    <a href="#" class="font-light hover: transition-colors">About</a>
+                    <a href="#" class="font-light hover: transition-colors">Package</a>
+                    <div class="relative group pr-8">
+                        <a href="#" class="font-light hover: transition-colors flex items-center">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fas fa-search text-sm"></i>
+                    </button>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fas fa-user text-sm"></i>
+                    </button>
+                    <button
+                        class="bg-white text-gray-800 px-3 py-2 rounded-full font-light hover:bg-orange-400 hover:text-white transition-colors text-sm">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="min-w-4xl mx-auto mt-8">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <h1 class="text-2xl font-semibold text-gray-800 mb-2">Create <span class="text-orange-400">New</span> Listing</h1>
+                    <p class="text-gray-600">Follow the simple 3 Steps to complete your listing.</p>
+                </div>
+                <div class="flex space-x-2">
+                    <div class="w-12 h-12 border-1 border-gray-300 rounded -rotate-12"></div>
+                    <div class="absolute text-white/20 text-3xl floating-animation" style="animation-delay: -4s">
+                        <img class="w-10 h-auto rotate-12" src="../images/plan.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-8 divide-x divide-gray-50">
+                <!-- Steps Sidebar -->
+                <div class="w-1/3">
+                    <div class="space-y-6">
+                        <!-- Step 1 -->
+                        <div class="flex items-center space-x-4" id="step1">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-orange-400 text-white rounded-full flex items-center justify-center text-sm font-semibold"
+                                    id="step1-icon">
+                                    <svg class="w-4 h-4 hidden" id="step1-check" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span id="step1-number">1</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Basic Information</h3>
+                                <p class="text-sm text-gray-500">Enter basic details</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-center space-x-4" id="step2">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold"
+                                    id="step2-icon">
+                                    <svg class="w-4 h-4 hidden" id="step2-check" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span id="step2-number">2</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-500">Media & Details</h3>
+                                <p class="text-sm text-gray-400">Add images and description</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-center space-x-4" id="step3">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold"
+                                    id="step3-icon">
+                                    <svg class="w-4 h-4 hidden" id="step3-check" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span id="step3-number">3</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-500">Pricing & Schedule</h3>
+                                <p class="text-sm text-gray-400">Set price and dates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Content -->
+                <div class="w-2/3">
+                    <h2 class="text-xl font-semibold text-purple-600 mb-6">Entity Mapping</h2>
+
+                    <!-- Step 1 Content -->
+                    <div id="step1-content" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                    placeholder="Enter name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Contact</label>
+                                <input type="text" id="contact"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                    placeholder="Enter contact">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                                <input type="text" id="location"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                    placeholder="Enter location">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                                <select id="category"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                                    <option value="">Select category</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="home">Home & Garden</option>
+                                    <option value="sports">Sports</option>
+                                    <option value="books">Books</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 Content -->
+                    <div id="step2-content" class="space-y-6 hidden  h-fit">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Images</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                <input type="file" id="images" multiple accept="image/*" class="hidden">
+                                <button type="button" onclick="document.getElementById('images').click()"
+                                    class="text-orange-400 hover:text-orange-500">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                                        viewBox="0 0 48 48">
+                                        <path
+                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <p class="mt-2 text-sm text-gray-600">Click to upload images or drag and drop</p>
+                                </button>
+                            </div>
+                            <div id="image-preview" class="mt-4 grid grid-cols-3 gap-4"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                            <textarea id="description" rows="4"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                placeholder="Enter description"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 Content -->
+                    <div id="step3-content" class="space-y-6 hidden">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+                                <input type="number" id="price"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                    placeholder="Enter price">
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                                <input type="date" id="start-date"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                                <input type="date" id="end-date"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+                        <button id="prev-btn"
+                            class="px-6 py-2 text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled>
+                            Prev
+                        </button>
+                        <button id="next-btn" class="px-6 py-2 bg-orange-400 text-white rounded-md hover:bg-orange-500">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="bg-white mt-16 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16">
+                <!-- Left Column -->
+                <div class="space-y-8">
+                    <!-- Main Heading -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Let's enjoy your journey<br />
+                        with us
+                    </h1>
+
+                    <!-- Navigation Menu -->
+                    <nav class="flex flex-wrap gap-8 text-lg font-medium text-gray-700">
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Home ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ About ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Service ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Blogs ]
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Description -->
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Experience ultimate comfort in our Single Restore Room, designed
+                        to offer tranquility
+                    </p>
+
+                    <!-- Newsletter Section -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Newsletter</h3>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200" />
+                            <button
+                                class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 whitespace-nowrap">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-gray-900">Contact:</h3>
+                        <p class="text-gray-600">Hellotraventure@trip.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Large Brand Name -->
+            <div class="relative mb-16 overflow-hidden">
+                <h2
+                    class="text-8xl md:text-9xl lg:text-[12rem] xl:text-[7rem] font-black text-gray-900 leading-none select-none">
+                    Travelly
+                </h2>
+
+                <!-- Cursor Pointer -->
+                <!-- <div class="cursor-pointer">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.5 3V2C8.5 1.44772 8.94772 1 9.5 1C10.0523 1 10.5 1.44772 10.5 2V3H13.5V2C13.5 1.44772 13.9477 1 14.5 1C15.0523 1 15.5 1.44772 15.5 2V3H17.5C18.6046 3 19.5 3.89543 19.5 5V17L12.5 12L5.5 17V5C5.5 3.89543 6.39543 3 7.5 3H8.5Z" fill="#374151"/>
+                    </svg>
+                </div> -->
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200">
+                <!-- Copyright -->
+                <div class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2025 travelly . All Rights Reserved.
+                </div>
+
+                <!-- Social Media Icons -->
+                <div class="flex items-center space-x-6">
+                    <!-- Facebook -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.621 5.367 11.988 11.988 11.988s11.987-5.367 11.987-11.988C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.535-.757-.938-1.073-2.168-.887-3.362.186-1.194.885-2.242 1.96-2.944 1.076-.701 2.397-.939 3.713-.667 1.316.272 2.466 1.073 3.228 2.25.762 1.177.962 2.62.562 4.054-.4 1.434-1.377 2.61-2.747 3.303-1.37.693-2.983.693-4.353 0-.171-.087-.333-.183-.485-.289-.152-.106-.295-.221-.428-.344-.133-.123-.257-.254-.372-.393-.115-.139-.221-.285-.318-.437z" />
+                        </svg>
+                    </a>
+
+                    <!-- Dribbble -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0C5.374 0 0 5.374 0 12s5.374 12 12 12 12-5.374 12-12S18.626 0 12 0zm7.568 5.302c1.4 1.7 2.252 3.853 2.414 6.202-.3-.064-3.077-.664-5.842-1.05-.12-.27-.245-.542-.376-.81-.335-.69-.697-1.375-1.089-2.051 2.826-1.171 4.893-2.291 4.893-2.291zM12 2.252c2.24 0 4.312.857 5.862 2.263 0 0-1.932 1.049-4.649 2.15-1.317-2.421-2.768-4.395-2.996-4.695.591-.106 1.188-.168 1.783-.168v.45zM8.965 3.617c.23.295 1.659 2.28 2.986 4.66C8.545 9.434 5.513 9.348 5.149 9.33 5.515 7.049 6.965 5.102 8.965 3.617zm-6.84 8.605c0-.15.003-.299.009-.447.367.016 4.505.184 8.044-1.245.375.735.735 1.48 1.068 2.23-.135.038-.27.08-.401.125C6.891 14.07 2.283 18.501 2.283 18.501S2.125 15.775 2.125 12.222zm9.875 9.626c-2.011 0-3.87-.723-5.321-1.926 0 0 3.832-3.715 7.506-5.235.09-.037.18-.07.271-.104 1.02 2.640 1.438 4.844 1.551 5.461-1.19.553-2.528.804-4.007.804zm5.69-2.435c-.105-.506-.465-2.427-1.389-4.868 2.526.335 4.743.213 5.007.18-.336 2.179-1.354 4.148-2.893 5.619-.725-.931-1.725-.931-1.725-.931z" />
+                        </svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function updateStepUI() {
+            // Update step indicators
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepElement = document.getElementById(`step${i}`);
+                const iconElement = document.getElementById(`step${i}-icon`);
+                const checkElement = document.getElementById(`step${i}-check`);
+                const numberElement = document.getElementById(`step${i}-number`);
+                const stepTexts = stepElement.querySelectorAll('h3, p');
+
+                if (i < currentStep) {
+                    // Completed step
+                    iconElement.className = 'w-8 h-8 bg-orange-400 text-white rounded-full flex items-center justify-center text-sm font-semibold';
+                    checkElement.classList.remove('hidden');
+                    numberElement.classList.add('hidden');
+                    stepTexts[0].className = 'font-medium text-gray-800';
+                    stepTexts[1].className = 'text-sm text-gray-500';
+                } else if (i === currentStep) {
+                    // Current step
+                    iconElement.className = 'w-8 h-8 bg-orange-400 text-white rounded-full flex items-center justify-center text-sm font-semibold';
+                    checkElement.classList.add('hidden');
+                    numberElement.classList.remove('hidden');
+                    stepTexts[0].className = 'font-medium text-gray-800';
+                    stepTexts[1].className = 'text-sm text-gray-500';
+                } else {
+                    // Future step
+                    iconElement.className = 'w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold';
+                    checkElement.classList.add('hidden');
+                    numberElement.classList.remove('hidden');
+                    stepTexts[0].className = 'font-medium text-gray-500';
+                    stepTexts[1].className = 'text-sm text-gray-400';
+                }
+
+                // Show/hide content
+                const contentElement = document.getElementById(`step${i}-content`);
+                if (i === currentStep) {
+                    contentElement.classList.remove('hidden');
+                } else {
+                    contentElement.classList.add('hidden');
+                }
+            }
+
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.disabled = currentStep === 1;
+            if (currentStep === totalSteps) {
+                nextBtn.textContent = 'Submit';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        // Handle image upload preview
+        document.getElementById('images').addEventListener('change', function (e) {
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+
+            Array.from(e.target.files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'w-full h-24 object-cover rounded-lg border border-gray-300';
+                        preview.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Navigation event listeners
+        document.getElementById('next-btn').addEventListener('click', function () {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepUI();
+            } else {
+                // Submit form
+                alert('Form submitted successfully!');
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', function () {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepUI();
+            }
+        });
+
+        // Initialize
+        updateStepUI();
+    </script>
+</body>
+
+</html>

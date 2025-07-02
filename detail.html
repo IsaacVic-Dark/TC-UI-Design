@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <section class="hero-bg h-screen flex flex-col relative">
+        <!-- Navigation -->
+        <nav class="m-4 px-4 py-1.5 backdrop-blur-sm bg-blue-50/25 rounded-full border border-white/20">
+            <div class="max-w-7xl mx-auto flex items-center justify-between text-white">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="size-6 bg-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">Travelly</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="landing.html" class="font-light hover:text-orange-300 transition-colors">Home</a>
+                    <a href="#" class="font-light hover: transition-colors">About</a>
+                    <a href="#" class="font-light hover: transition-colors">Package</a>
+                    <div class="relative group pr-8">
+                        <a href="#" class="font-light hover: transition-colors flex items-center">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fas fa-search text-sm"></i>
+                    </button>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fas fa-user text-sm"></i>
+                    </button>
+                    <button
+                        class="bg-white text-gray-800 px-3 py-2 rounded-full font-light hover:bg-orange-400 hover:text-white transition-colors text-sm">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Property Header -->
+        <div class="flex justify-between items-start my-8 px-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Villa <span class="text-orange-400">Pinewood</span></h1>
+                <div class="flex items-center text-gray-600">
+                    <span>Italy</span>
+                    <span class="mx-2">•</span>
+                    <span>Private Villa</span>
+                    <span class="mx-2">•</span>
+                    <span>More Houses</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="size-10 bg-white rounded-full hover:bg-orange-400 hover:text-white">
+                    <i class="fa fa-share-nodes"></i>
+                </button>
+                <button class="size-10 bg-white rounded-full hover:bg-orange-400 hover:text-white">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="grid grid-cols-3 gap-2 px-16">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2075&q=80"
+                alt="Villa interior"
+                class="col-span-2 row-span-3 w-full h-full max-h-[21.99rem] object-cover rounded-lg" />
+
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2053&q=80"
+                alt="Bathroom" class="w-full h-full max-h-28 object-cover rounded-lg" />
+
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2070&q=80"
+                alt="Kitchen" class="w-full h-full max-h-28 object-cover rounded-lg" />
+
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2053&q=80"
+                alt="Bedroom" class="w-full h-full max-h-28 object-cover rounded-lg" />
+        </div> 
+        <!-- Floating Elements -->
+        <div class="absolute top-1/4 left-10 text-white/20 text-4xl floating-animation" style="animation-delay: -2s">
+            <i class="fas fa-mountain"></i>
+        </div>
+        <div class="absolute top-1/3 right-16 text-white/20 text-3xl floating-animation" style="animation-delay: -4s">
+            <i class="fas fa-compass"></i>
+        </div>
+        <div class="absolute bottom-1/4 left-20 text-white/20 text-2xl floating-animation" style="animation-delay: -1s">
+            <i class="fas fa-map"></i>
+        </div>
+        <div class="absolute top-1/2 right-32 text-white/20 text-2xl floating-animation" style="animation-delay: -3s">
+            <i class="fas fa-camera"></i>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 px-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2">
+
+                <!-- Description -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Description</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Villa Pinewood is a spacious and elegant villa that offers a comfortable and luxurious stay
+                        for
+                        up to 8 guests. It features 4 bedrooms, 3 bathrooms, a fully equipped kitchen, a spacious
+                        living
+                        room, and a private pool. The villa is located on a hilltop, overlooking the beautiful ocean
+                        and
+                        the lush greenery. It is the perfect place to enjoy the sunrise and the sunset, as well as
+                        the
+                        fresh breeze that the tranquil atmosphere.
+                    </p>
+                </div>
+
+                <!-- Hosted -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Hosted</h2>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Host" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Zachary Valdetine</h3>
+                            <p class="text-gray-600">Host • 3 Years Hosting</p>
+                        </div>
+                        <div class="ml-auto flex items-center">
+                            <button class="text-gray-400 hover:text-gray-600 mr-4">
+                                <i class="fas fa-comment"></i>
+                                Chat
+                            </button>
+                            <button class="bg-orange-400 text-white px-6 py-2 rounded-3xl hover:bg-gray-800">
+                                Reserve
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facility -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Facility</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-bed text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">4 Bedrooms</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-bath text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">3 Bathrooms</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-utensils text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Kitchen</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-couch text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Living Room</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-wifi text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Wifi</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-swimming-pool text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Private Pool</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-car text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Parking Area</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Terms and Conditions</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Check in 03:00 PM and Check Out 02:00 PM</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-ban text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">No animals allowed</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-users text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">Maximum 8 guests</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-times text-gray-400 mr-3"></i>
+                            <span class="text-gray-600">No Parties / Event</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Right Column - Booking -->
+            <div class="lg:col-span-1">
+                <div class="bg-gray-100 rounded-lg p-4 sticky top-8">
+                    <!-- Price -->
+                    <div class="mb-4">
+                        <div class="text-2xl font-semibold" id="price-per-person">$100 <span
+                                class="text-base font-normal text-gray-600">/person</span></div>
+                    </div>
+                    <!-- Booking Card -->
+                    <div class="bg-white p-4 rounded-xl space-y-4">
+                        <!-- Date Inputs -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex flex-col">
+                                <label class="text-xs text-gray-600 flex items-center gap-1 mb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Check In
+                                </label>
+                                <input type="date"
+                                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                                    value="2023-12-26">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="text-xs text-gray-600 flex items-center gap-1 mb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Check Out
+                                </label>
+                                <input type="date"
+                                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                                    value="2023-12-30">
+                            </div>
+                        </div>
+                        <!-- Guest Selector -->
+                        <div class="space-y-1">
+                            <label class="text-xs text-gray-600 flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5.121 17.804A4 4 0 0112 14a4 4 0 016.879 3.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Guests
+                            </label>
+                            <select id="guest-count"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black">
+                                <option value="1" selected>1 People</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6">6 People</option>
+                            </select>
+                        </div>
+                        <button
+                            class="w-full mt-4 bg-orange-400 text-white py-2 rounded-full font-medium hover:bg-gray-900 transition duration-200">
+                            <a href="pay.html">Book Now</a>
+                        </button>
+
+                    </div>
+
+                    <p class="text-center text-xs text-gray-600 mt-3">You won't be charged yet</p>
+
+                    <!-- Price Breakdown -->
+                    <div class="border-t border-gray-200 pt-2 mt-2">
+                        <div class="flex justify-between items-center font-bold">
+                            <span class="text-gray-900">Total
+                                <span class="text-xs text-gray-400 font-medium" id="count-price-expression">$100 x 4
+                                    persons</span>
+                            </span>
+                            <span id="total-price" class="text-gray-900">$100</span>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            let pricePerPerson = document.getElementById('price-per-person');//$100
+                            const guestCountSelect = document.getElementById('guest-count');
+                            const countPriceExpression = document.getElementById('count-price-expression');
+                            let totalPrice = document.getElementById('total-price');
+                            //remove currency symbol and convert to number
+                            pricePerPerson = parseFloat(pricePerPerson.textContent.replace(/[$,]/g, ''));
+
+
+                            // Function to update the price breakdown
+                            function updatePrice() {
+                                guestCount = parseInt(guestCountSelect.value);
+                                console.log(`Guest Count: ${guestCount}`);
+
+                                const total = pricePerPerson * guestCount;
+                                console.log(`Total Price: ${total}`);
+
+                                countPriceExpression.textContent = `$${pricePerPerson} x ${guestCount} persons`;
+
+                                console.log(`Count Price Expression: ${countPriceExpression.textContent}`);
+
+                                totalPrice.textContent = `$${total}`;
+                            }
+
+                            // Event listener for guest count change
+                            guestCountSelect.addEventListener('change', updatePrice);
+
+                            // Initial price update
+                            updatePrice();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <section>
+                            <!-- Location -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Location</h2>
+                    <p class="text-gray-600 mb-4">Marina Lobotondo, Italy</p>
+                    <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map-marker-alt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500">Interactive map would be displayed here</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            10 minutes to supermarket
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-gas-pump mr-2"></i>
+                            5 minutes to gas station
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-coffee mr-2"></i>
+                            10 minutes to coffee shop
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-road mr-2"></i>
+                            20 minutes to the highway
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ratings and Reviews -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Ratings and Reviews</h2>
+                    <p class="text-gray-600 mb-6">Get a check overview of the rental satisfaction from real guests
+                    </p>
+
+                    <div class="flex items-center mb-6">
+                        <div class="text-4xl font-bold text-gray-900 mr-4">4.8</div>
+                        <div>
+                            <div class="flex text-yellow-400 mb-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-600">Based on 24 reviews</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Rating Breakdown -->
+                        <div class="mb-8 col-span-1">
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 w-8">5</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                                        <div class="bg-gray-800 h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 w-8">(18)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 w-8">4</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                                        <div class="bg-gray-800 h-2 rounded-full" style="width: 20%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 w-8">(4)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 w-8">3</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                                        <div class="bg-gray-800 h-2 rounded-full" style="width: 8%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 w-8">(2)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 w-8">2</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                                        <div class="bg-gray-800 h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 w-8">(0)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 w-8">1</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                                        <div class="bg-gray-800 h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 w-8">(0)</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Reviews -->
+                        <div class="space-y-6 col-span-2">
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-start">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b9905e8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                                        alt="Reviewer" class="w-10 h-10 rounded-full object-cover mr-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center mb-2">
+                                            <h4 class="font-semibold text-gray-900 mr-2">Robert Deweart</h4>
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="font-medium text-gray-900 mb-2">Cozy, Luxurious, Stunning Views</h5>
+                                        <p class="text-gray-600 text-sm">We had a wonderful stay at Villa Pinewood. The
+                                            villa was cozy and luxurious, with everything we needed. The views were
+                                            absolutely spectacular, especially in the morning and evening. The beds were
+                                            very friendly, although we found no...</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-start">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                                        alt="Reviewer" class="w-10 h-10 rounded-full object-cover mr-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center mb-2">
+                                            <h4 class="font-semibold text-gray-900 mr-2">Ethan</h4>
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="font-medium text-gray-900 mb-2">Spacious, Elegant, Private pool</h5>
+                                        <p class="text-gray-600 text-sm">The house is spacious and elegant, with enough
+                                            room
+                                            for everyone. The private pool was a big plus, we could enjoy a peaceful
+                                            time
+                                            wanted. The only downside was that the villa was a bit far from the beach,
+                                            but
+                                            the hosts provided a car...</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="pb-6">
+                                <div class="flex items-start">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                                        alt="Reviewer" class="w-10 h-10 rounded-full object-cover mr-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center mb-2">
+                                            <h4 class="font-semibold text-gray-900 mr-2">Emma</h4>
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="fas fa-star text-xs"></i>
+                                                <i class="far fa-star text-xs"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="font-medium text-gray-900 mb-2">Minimalist, Panoramic views</h5>
+                                        <p class="text-gray-600 text-sm">The villa was clean and minimalist, with lots
+                                            of
+                                            light and fresh air. The views were panoramic, overlooking the city and the
+                                            sea.
+                                            From the balcony and terrace. However, the air conditioner was a bit cold
+                                            and
+                                            unbalanced.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+    </main>
+
+
+    <!-- Footer section -->
+    <footer class="bg-white py-16 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16">
+                <!-- Left Column -->
+                <div class="space-y-8">
+                    <!-- Main Heading -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Let's enjoy your journey<br />
+                        with us
+                    </h1>
+
+                    <!-- Navigation Menu -->
+                    <nav class="flex flex-wrap gap-8 text-lg font-medium text-gray-700">
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Home ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ About ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Service ]
+                        </a>
+                        <a href="#" class="hover:text-orange-500 transition-colors duration-200 flex items-center">
+                            [ Blogs ]
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Description -->
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Experience ultimate comfort in our Single Restore Room, designed
+                        to offer tranquility
+                    </p>
+
+                    <!-- Newsletter Section -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Newsletter</h3>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200" />
+                            <button
+                                class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 whitespace-nowrap">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold text-gray-900">Contact:</h3>
+                        <p class="text-gray-600">Hellotraventure@trip.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Large Brand Name -->
+            <div class="relative mb-16 overflow-hidden">
+                <h2
+                    class="text-8xl md:text-9xl lg:text-[12rem] xl:text-[7rem] font-black text-gray-900 leading-none select-none">
+                    Travelly
+                </h2>
+
+                <!-- Cursor Pointer -->
+                <!-- <div class="cursor-pointer">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.5 3V2C8.5 1.44772 8.94772 1 9.5 1C10.0523 1 10.5 1.44772 10.5 2V3H13.5V2C13.5 1.44772 13.9477 1 14.5 1C15.0523 1 15.5 1.44772 15.5 2V3H17.5C18.6046 3 19.5 3.89543 19.5 5V17L12.5 12L5.5 17V5C5.5 3.89543 6.39543 3 7.5 3H8.5Z" fill="#374151"/>
+                    </svg>
+                </div> -->
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200">
+                <!-- Copyright -->
+                <div class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2025 travelly . All Rights Reserved.
+                </div>
+
+                <!-- Social Media Icons -->
+                <div class="flex items-center space-x-6">
+                    <!-- Facebook -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.621 5.367 11.988 11.988 11.988s11.987-5.367 11.987-11.988C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.535-.757-.938-1.073-2.168-.887-3.362.186-1.194.885-2.242 1.96-2.944 1.076-.701 2.397-.939 3.713-.667 1.316.272 2.466 1.073 3.228 2.25.762 1.177.962 2.62.562 4.054-.4 1.434-1.377 2.61-2.747 3.303-1.37.693-2.983.693-4.353 0-.171-.087-.333-.183-.485-.289-.152-.106-.295-.221-.428-.344-.133-.123-.257-.254-.372-.393-.115-.139-.221-.285-.318-.437z" />
+                        </svg>
+                    </a>
+
+                    <!-- Dribbble -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0C5.374 0 0 5.374 0 12s5.374 12 12 12 12-5.374 12-12S18.626 0 12 0zm7.568 5.302c1.4 1.7 2.252 3.853 2.414 6.202-.3-.064-3.077-.664-5.842-1.05-.12-.27-.245-.542-.376-.81-.335-.69-.697-1.375-1.089-2.051 2.826-1.171 4.893-2.291 4.893-2.291zM12 2.252c2.24 0 4.312.857 5.862 2.263 0 0-1.932 1.049-4.649 2.15-1.317-2.421-2.768-4.395-2.996-4.695.591-.106 1.188-.168 1.783-.168v.45zM8.965 3.617c.23.295 1.659 2.28 2.986 4.66C8.545 9.434 5.513 9.348 5.149 9.33 5.515 7.049 6.965 5.102 8.965 3.617zm-6.84 8.605c0-.15.003-.299.009-.447.367.016 4.505.184 8.044-1.245.375.735.735 1.48 1.068 2.23-.135.038-.27.08-.401.125C6.891 14.07 2.283 18.501 2.283 18.501S2.125 15.775 2.125 12.222zm9.875 9.626c-2.011 0-3.87-.723-5.321-1.926 0 0 3.832-3.715 7.506-5.235.09-.037.18-.07.271-.104 1.02 2.640 1.438 4.844 1.551 5.461-1.19.553-2.528.804-4.007.804zm5.69-2.435c-.105-.506-.465-2.427-1.389-4.868 2.526.335 4.743.213 5.007.18-.336 2.179-1.354 4.148-2.893 5.619-.725-.931-1.725-.931-1.725-.931z" />
+                        </svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // window.addEventListener("scroll", () => {
+        //     const scrolled = window.pageYOffset;
+        //     const hero = document.querySelector(".hero-bg");
+        //     const rate = scrolled * -0.5;
+        //     hero.style.transform = `translate3d(0, ${rate}px, 0)`;
+        // });
+
+    </script>
+</body>
+
+</html>
