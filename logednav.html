@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelly - Don't just imagine it, make it happen</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, -0.5));
+            min-height: 100vh;
+        }
+
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .person-silhouette {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .booking-indicator {
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-tab {
+            transition: all 0.3s ease;
+        }
+
+        .search-tab.active {
+            background: #f97316;
+            color: white;
+        }
+
+        .search-tab:not(.active) {
+            background: white;
+            color: #6b7280;
+        }
+
+        .search-tab:not(.active):hover {
+            background: #f9fafb;
+            color: #374151;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden bg-gray-100">
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex flex-col relative">
+        <!-- Navigation -->
+        <nav class="px-4 py-1.5 backdrop-blur-sm bg-blue-50/25 rounded-full m-4 border border-white/20">
+            <div class="max-w-7xl mx-auto flex items-center justify-between text-white">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="size-6 bg-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">Travelly</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="font-medium hover:text-orange-300 transition-colors">Home</a>
+                    <a href="plan.html" class="font-medium hover:text-orange-300">Plan</a>
+                    <a href="#" class="font-medium hover:text-orange-300">Package</a>
+                    <div class="relative group pr-8">
+                        <a href="#" class="font-medium hover:text-orange-300 flex items-center">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <button
+                        class="size-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <button class="flex items-center py-[2px]">
+                        <img class="w-8 h-8 rounded-full object-cover" src="/images/profile.jpg" alt="User profile">
+                        <select name="" id="" class="px-2">
+                            <option value="profile" class="font-medium text-black">John Doe</option>
+                            <option value="setting" class="text-black">
+                                Setting</option>
+                            <option value="logout" class="text-black">Logout</option>
+                        </select>
+
+                        <!-- <div class="relative inline-block group">
+                            <button
+                                class="text-white hover:text-orange-300 font-medium px-5 py-2.5 text-center inline-flex items-center"
+                                type="button">
+                                John Doe
+                                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 hidden group-hover:block z-10">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                            out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </button>
+                </div>
+        </nav>
+    </section>
+
+</body>
+
+</html>
