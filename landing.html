@@ -7,19 +7,35 @@
     <title>Travelly - Don't just imagine it, make it happen</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .slide-transition {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
 
         body {
             font-family: "Roboto", sans-serif !important;
         }
 
         .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.5),
-                    rgba(0, 0, 0, -0.5));
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, -0.5));
             min-height: 100vh;
         }
-
 
         .floating-animation {
             animation: float 6s ease-in-out infinite;
@@ -118,6 +134,7 @@
             color: #374151;
         }
     </style>
+
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
@@ -282,16 +299,16 @@
 
         <!-- Floating Elements -->
         <div class="absolute top-1/4 left-10 text-white/20 text-4xl floating-animation" style="animation-delay: -2s">
-            <img class="w-10 h-auto rotate-12" src="../images/mountain.png" alt="">
+            <img class="w-10 h-auto rotate-12" src="../images/mountain.png" alt="" />
         </div>
         <div class="absolute top-1/3 right-16 text-white/20 text-3xl floating-animation" style="animation-delay: -4s">
-            <img class="w-10 h-auto rotate-12" src="../images/compass.png" alt="">
+            <img class="w-10 h-auto rotate-12" src="../images/compass.png" alt="" />
         </div>
         <div class="absolute bottom-1/3 left-60 text-white/20 text-2xl floating-animation" style="animation-delay: -1s">
-            <img class="w-10 h-auto rotate-12" src="../images/map.png" alt="">
+            <img class="w-10 h-auto rotate-12" src="../images/map.png" alt="" />
         </div>
         <div class="absolute top-1/2 right-55 text-white/20 text-2xl floating-animation" style="animation-delay: -3s">
-            <img class="w-10 h-auto rotate-12" src="../images/camera.png" alt="">
+            <img class="w-10 h-auto rotate-12" src="../images/camera.png" alt="" />
         </div>
     </section>
 
@@ -302,211 +319,346 @@
             Explore Best Travel Places
         </h1>
 
-        <!-- Category Filters -->
-        <div class="flex flex-wrap justify-start gap-2 mb-6">
-            <button
-                class="px-4 py-2 rounded-3xl border border-2 border-black hover:bg-orange-400 hover:border-orange-400 hover:text-white">
-                All Type
-            </button>
-            <button class="px-4 py-2 rounded-2xl hover:text-orange-400">
-                Beaches & Islands
-            </button>
-            <button class="px-4 py-2 rounded-2xl hover:text-orange-400">
-                Mountains & Adventure
-            </button>
-            <button class="px-4 py-2 rounded-2xl hover:text-orange-400">
-                Historical & Cultural
-            </button>
-            <button class="px-4 py-2 rounded-2xl hover:text-orange-400">
-                Wildlife & Nature
-            </button>
+        <!-- Travel Cards Grid -->
+        <p class="px-4 py-2 rounded-2xl hover:text-orange-400">
+            <i class="fas fa-arrow-right mr-2"></i>
+            For family
+        </p>
+
+        <div class="border-t border-gray-200 mb-4"></div>
+        <!-- Cards  -->
+        <div class="container mx-auto px-4 py-6">
+            <div x-data="carousel()" x-cloak class="relative">
+                <div class="relative overflow-hidden rounded-lg">
+                    <div class="flex slide-transition"
+                        :style="`transform: translateX(-${currentSlide * slidePercentage}%)`">
+                        <template x-for="(slide, index) in slides" :key="slide.id">
+                            <div class="w-full md:w-1/3 flex-shrink-0 px-2 py-4">
+                                <!-- Card 1 -->
+                                <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
+                                    <!-- Image Section -->
+                                    <div class="relative">
+                                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                            alt="Central plaza Resort" class="w-full h-48 object-cover" />
+
+                                        <!-- Discount Badge -->
+                                        <div class="absolute top-4 left-4">
+                                            <span
+                                                class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
+                                                20% Off
+                                            </span>
+                                        </div>
+
+                                        <!-- Heart Icon -->
+                                        <div class="absolute top-4 right-4">
+                                            <button
+                                                class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
+                                                <i
+                                                    class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Section -->
+                                    <div class="p-6">
+                                        <!-- Title and Location -->
+                                        <div class="mb-4">
+                                            <a href="detail.html">
+                                                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                                                    Central plaza Resort
+                                                </h3>
+                                            </a>
+                                            <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
+                                        </div>
+
+                                        <!-- Rating -->
+                                        <div class="flex items-center mb-3">
+                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10
+                                                Exceptional</span>
+                                        </div>
+
+                                        <!-- Route Info -->
+                                        <div class="flex items-center mb-4">
+                                            <i class="fas fa-route text-gray-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
+                                        </div>
+
+                                        <!-- Pricing -->
+                                        <div class="mb-3">
+                                            <div class="flex items-baseline">
+                                                <span class="text-xl font-bold text-gray-900">$999.99</span>
+                                                <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
+                                            </div>
+                                            <p class="text-gray-500 text-xs">Per Traveler</p>
+                                        </div>
+
+                                        <!-- Date Range -->
+                                        <div class="text-gray-500 text-xs">
+                                            From Tue, Nov 26, Sat, Nov 30 (4 nights)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <button @click="prev()"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -ml-4"
+                    :disabled="currentSlide === 0" :class="{ 'opacity-50 cursor-not-allowed': currentSlide === 0 }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button @click="next()"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -mr-4"
+                    :disabled="currentSlide >= slides.length - visibleSlides"
+                    :class="{ 'opacity-50 cursor-not-allowed': currentSlide >= slides.length - visibleSlides }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="flex justify-center mt-4 space-x-2">
+                    <template x-for="(slide, index) in slides" :key="slide.id">
+                        <button @click="goTo(index)" class="w-3 h-3 rounded-full transition-colors"
+                            :class="{ 'bg-blue-600': currentSlide === index, 'bg-gray-300': currentSlide !== index }"
+                            :aria-label="`Prejsť na slide ${index + 1}`"></button>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <!-- Travel Cards Grid -->
+        <p class="px-4 py-2 rounded-2xl hover:text-orange-400">
+            <i class="fas fa-arrow-right mr-2"></i>
+            For partners
+        </p>
+
+        <div class="border-t border-gray-200 mb-4"></div>
+        <!-- Cards  -->
+        <div class="container mx-auto px-4 py-6">
+            <div x-data="carousel()" x-cloak class="relative">
+                <div class="relative overflow-hidden rounded-lg">
+                    <div class="flex slide-transition"
+                        :style="`transform: translateX(-${currentSlide * slidePercentage}%)`">
+                        <template x-for="(slide, index) in slides" :key="slide.id">
+                            <div class="w-full md:w-1/3 flex-shrink-0 px-2 py-4">
+                                <!-- Card 1 -->
+                                <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
+                                    <!-- Image Section -->
+                                    <div class="relative">
+                                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                            alt="Central plaza Resort" class="w-full h-48 object-cover" />
+
+                                        <!-- Discount Badge -->
+                                        <div class="absolute top-4 left-4">
+                                            <span
+                                                class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
+                                                20% Off
+                                            </span>
+                                        </div>
+
+                                        <!-- Heart Icon -->
+                                        <div class="absolute top-4 right-4">
+                                            <button
+                                                class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
+                                                <i
+                                                    class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Section -->
+                                    <div class="p-6">
+                                        <!-- Title and Location -->
+                                        <div class="mb-4">
+                                            <a href="detail.html">
+                                                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                                                    Central plaza Resort
+                                                </h3>
+                                            </a>
+                                            <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
+                                        </div>
+
+                                        <!-- Rating -->
+                                        <div class="flex items-center mb-3">
+                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10
+                                                Exceptional</span>
+                                        </div>
+
+                                        <!-- Route Info -->
+                                        <div class="flex items-center mb-4">
+                                            <i class="fas fa-route text-gray-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
+                                        </div>
+
+                                        <!-- Pricing -->
+                                        <div class="mb-3">
+                                            <div class="flex items-baseline">
+                                                <span class="text-xl font-bold text-gray-900">$999.99</span>
+                                                <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
+                                            </div>
+                                            <p class="text-gray-500 text-xs">Per Traveler</p>
+                                        </div>
+
+                                        <!-- Date Range -->
+                                        <div class="text-gray-500 text-xs">
+                                            From Tue, Nov 26, Sat, Nov 30 (4 nights)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <button @click="prev()"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -ml-4"
+                    :disabled="currentSlide === 0" :class="{ 'opacity-50 cursor-not-allowed': currentSlide === 0 }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button @click="next()"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -mr-4"
+                    :disabled="currentSlide >= slides.length - visibleSlides"
+                    :class="{ 'opacity-50 cursor-not-allowed': currentSlide >= slides.length - visibleSlides }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="flex justify-center mt-4 space-x-2">
+                    <template x-for="(slide, index) in slides" :key="slide.id">
+                        <button @click="goTo(index)" class="w-3 h-3 rounded-full transition-colors"
+                            :class="{ 'bg-blue-600': currentSlide === index, 'bg-gray-300': currentSlide !== index }"
+                            :aria-label="`Prejsť na slide ${index + 1}`"></button>
+                    </template>
+                </div>
+            </div>
         </div>
 
-        <!-- Divider -->
-        <div class="border-t border-gray-200 mb-12"></div>
-
         <!-- Travel Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
-                <!-- Image Section -->
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                        alt="Central plaza Resort" class="w-full h-48 object-cover">
+        <p class="px-4 py-2 rounded-2xl hover:text-orange-400">
+            <i class="fas fa-arrow-right mr-2"></i>
+            For friends
+        </p>
 
-                    <!-- Discount Badge -->
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
-                            20% Off
-                        </span>
-                    </div>
+        <div class="border-t border-gray-200 mb-4"></div>
+        <!-- Cards  -->
+        <div class="container mx-auto px-4 py-6">
+            <div x-data="carousel()" x-cloak class="relative">
+                <div class="relative overflow-hidden rounded-lg">
+                    <div class="flex slide-transition"
+                        :style="`transform: translateX(-${currentSlide * slidePercentage}%)`">
+                        <template x-for="(slide, index) in slides" :key="slide.id">
+                            <div class="w-full md:w-1/3 flex-shrink-0 px-2 py-4">
+                                <!-- Card 1 -->
+                                <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
+                                    <!-- Image Section -->
+                                    <div class="relative">
+                                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                            alt="Central plaza Resort" class="w-full h-48 object-cover" />
 
-                    <!-- Heart Icon -->
-                    <div class="absolute top-4 right-4">
-                        <button
-                            class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
-                            <i class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
-                        </button>
+                                        <!-- Discount Badge -->
+                                        <div class="absolute top-4 left-4">
+                                            <span
+                                                class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
+                                                20% Off
+                                            </span>
+                                        </div>
+
+                                        <!-- Heart Icon -->
+                                        <div class="absolute top-4 right-4">
+                                            <button
+                                                class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
+                                                <i
+                                                    class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Section -->
+                                    <div class="p-6">
+                                        <!-- Title and Location -->
+                                        <div class="mb-4">
+                                            <a href="detail.html">
+                                                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                                                    Central plaza Resort
+                                                </h3>
+                                            </a>
+                                            <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
+                                        </div>
+
+                                        <!-- Rating -->
+                                        <div class="flex items-center mb-3">
+                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10
+                                                Exceptional</span>
+                                        </div>
+
+                                        <!-- Route Info -->
+                                        <div class="flex items-center mb-4">
+                                            <i class="fas fa-route text-gray-400 text-xs"></i>
+                                            <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
+                                        </div>
+
+                                        <!-- Pricing -->
+                                        <div class="mb-3">
+                                            <div class="flex items-baseline">
+                                                <span class="text-xl font-bold text-gray-900">$999.99</span>
+                                                <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
+                                            </div>
+                                            <p class="text-gray-500 text-xs">Per Traveler</p>
+                                        </div>
+
+                                        <!-- Date Range -->
+                                        <div class="text-gray-500 text-xs">
+                                            From Tue, Nov 26, Sat, Nov 30 (4 nights)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
 
-                <!-- Content Section -->
-                <div class="p-6">
-                    <!-- Title and Location -->
-                    <div class="mb-4">
-                        <a href="detail.html">
-                            <h3 class="text-xl font-bold text-gray-900 mb-1">Central plaza Resort</h3>
-                        </a>
-                        <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
-                    </div>
+                <button @click="prev()"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -ml-4"
+                    :disabled="currentSlide === 0" :class="{ 'opacity-50 cursor-not-allowed': currentSlide === 0 }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button @click="next()"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 -mr-4"
+                    :disabled="currentSlide >= slides.length - visibleSlides"
+                    :class="{ 'opacity-50 cursor-not-allowed': currentSlide >= slides.length - visibleSlides }">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
 
-                    <!-- Rating -->
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-star text-yellow-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10 Exceptional</span>
-                    </div>
-
-                    <!-- Route Info -->
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-route text-gray-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
-                    </div>
-
-                    <!-- Pricing -->
-                    <div class="mb-3">
-                        <div class="flex items-baseline">
-                            <span class="text-xl font-bold text-gray-900">$999.99</span>
-                            <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
-                        </div>
-                        <p class="text-gray-500 text-xs">Per Traveler</p>
-                    </div>
-
-                    <!-- Date Range -->
-                    <div class="text-gray-500 text-xs">
-                        From Tue, Nov 26, Sat, Nov 30 (4 nights)
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
-                <!-- Image Section -->
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                        alt="Central plaza Resort" class="w-full h-48 object-cover">
-
-                    <!-- Discount Badge -->
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
-                            20% Off
-                        </span>
-                    </div>
-
-                    <!-- Heart Icon -->
-                    <div class="absolute top-4 right-4">
-                        <button
-                            class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
-                            <i class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Content Section -->
-                <div class="p-6">
-                    <!-- Title and Location -->
-                    <div class="mb-4">
-                        <h3 class="text-xl font-bold text-gray-900 mb-1">Central plaza Resort</h3>
-                        <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
-                    </div>
-
-                    <!-- Rating -->
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-star text-yellow-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10 Exceptional</span>
-                    </div>
-
-                    <!-- Route Info -->
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-route text-gray-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
-                    </div>
-
-                    <!-- Pricing -->
-                    <div class="mb-3">
-                        <div class="flex items-baseline">
-                            <span class="text-xl font-bold text-gray-900">$999.99</span>
-                            <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
-                        </div>
-                        <p class="text-gray-500 text-xs">Per Traveler</p>
-                    </div>
-
-                    <!-- Date Range -->
-                    <div class="text-gray-500 text-xs">
-                        From Tue, Nov 26, Sat, Nov 30 (4 nights)
-                    </div>
+                <div class="flex justify-center mt-4 space-x-2">
+                    <template x-for="(slide, index) in slides" :key="slide.id">
+                        <button @click="goTo(index)" class="w-3 h-3 rounded-full transition-colors"
+                            :class="{ 'bg-blue-600': currentSlide === index, 'bg-gray-300': currentSlide !== index }"
+                            :aria-label="`Prejsť na slide ${index + 1}`"></button>
+                    </template>
                 </div>
             </div>
-            <!-- Card 3 -->
-            <div class="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden">
-                <!-- Image Section -->
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                        alt="Central plaza Resort" class="w-full h-48 object-cover">
-
-                    <!-- Discount Badge -->
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-orange-400 text-black text-sm font-semibold px-3 py-1 rounded-full">
-                            20% Off
-                        </span>
-                    </div>
-
-                    <!-- Heart Icon -->
-                    <div class="absolute top-4 right-4">
-                        <button
-                            class="bg-white bg-opacity-80 hover:bg-opacity-100 size-8 rounded-full transition-all duration-200">
-                            <i class="fa-solid fa-heart hover:text-red-500 transition-colors duration-200"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Content Section -->
-                <div class="p-6">
-                    <!-- Title and Location -->
-                    <div class="mb-4">
-                        <h3 class="text-xl font-bold text-gray-900 mb-1">Central plaza Resort</h3>
-                        <p class="text-gray-500 text-xs">Koggala, Sri-Lanka</p>
-                    </div>
-
-                    <!-- Rating -->
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-star text-yellow-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">3.5 stars - 10/10 Exceptional</span>
-                    </div>
-
-                    <!-- Route Info -->
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-route text-gray-400 text-xs"></i>
-                        <span class="text-gray-600 text-xs ml-2">Dhaka (DAC) - Antigua (WI)</span>
-                    </div>
-
-                    <!-- Pricing -->
-                    <div class="mb-3">
-                        <div class="flex items-baseline">
-                            <span class="text-xl font-bold text-gray-900">$999.99</span>
-                            <span class="text-lg text-gray-400 line-through ml-2">$1999.99</span>
-                        </div>
-                        <p class="text-gray-500 text-xs">Per Traveler</p>
-                    </div>
-
-                    <!-- Date Range -->
-                    <div class="text-gray-500 text-xs">
-                        From Tue, Nov 26, Sat, Nov 30 (4 nights)
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
+    <!-- Steps Section -->
     <section class="p-8 bg-white mt-8">
         <div class="text-center mb-8">
             <h1 class="text-3xl text-black font-bold text-center">
@@ -552,7 +704,9 @@
                 <h3 class="text-md font-semibold mb-2 text-gray-800">
                     Hassle free purchase
                 </h3>
-                <p class="text-gray-800 text-xs">Easy booking with secure payment options</p>
+                <p class="text-gray-800 text-xs">
+                    Easy booking with secure payment options
+                </p>
             </div>
 
             <!-- Step 4 -->
@@ -564,14 +718,16 @@
                 <h3 class="text-md font-semibold mb-2 text-gray-800">
                     Buy back guarantee
                 </h3>
-                <p class="text-gray-800 text-xs">Money-back guarantee if plans change</p>
+                <p class="text-gray-800 text-xs">
+                    Money-back guarantee if plans change
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="bg-gray-100 py-16">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-4xl mx-auto px-6">
             <h1 class="text-3xl font-bold text-center mb-8">Our services</h1>
             <!-- <div class="flex justify-center"> -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -618,102 +774,7 @@
         </div>
     </section>
 
-
-
-    <!-- Host Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16">
-        <!-- Section Title -->
-        <h2 class="text-3xl font-bold text-center mb-12">
-            Best Hosts of the Month
-        </h2>
-
-        <!-- Hosts Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-            <div class="bg-white rounded-xl  max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
-                <!-- Top Image with Rating Badge -->
-                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
-                    <div
-                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
-                        <i class="fa fa-star text-orange-400"></i> 4.9
-                    </div>
-                </div>
-
-                <!-- Profile Image (Overlapping) -->
-                <div
-                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
-                    <img class="size-20 rounded-full border-4 border-white object-cover " src="/images/profile.jpg"
-                        alt="Profile"><!-- Name and Location -->
-                    <div class="text-center px-4 py-2">
-                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
-                        <p class="text-xs text-gray-500">Gaylorside</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl  max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
-                <!-- Top Image with Rating Badge -->
-                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
-                    <div
-                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
-                        <i class="fa fa-star text-orange-400"></i> 4.9
-                    </div>
-                </div>
-
-                <!-- Profile Image (Overlapping) -->
-                <div
-                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
-                    <img class="size-20 rounded-full border-4 border-white object-cover " src="/images/profile.jpg"
-                        alt="Profile"><!-- Name and Location -->
-                    <div class="text-center px-4 py-2">
-                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
-                        <p class="text-xs text-gray-500">Gaylorside</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl  max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
-                <!-- Top Image with Rating Badge -->
-                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
-                    <div
-                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
-                        <i class="fa fa-star text-orange-400"></i> 4.9
-                    </div>
-                </div>
-
-                <!-- Profile Image (Overlapping) -->
-                <div
-                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
-                    <img class="size-20 rounded-full border-4 border-white object-cover " src="/images/profile.jpg"
-                        alt="Profile"><!-- Name and Location -->
-                    <div class="text-center px-4 py-2">
-                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
-                        <p class="text-xs text-gray-500">Gaylorside</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl  max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
-                <!-- Top Image with Rating Badge -->
-                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
-                    <div
-                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
-                        <i class="fa fa-star text-orange-400"></i> 4.9
-                    </div>
-                </div>
-
-                <!-- Profile Image (Overlapping) -->
-                <div
-                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
-                    <img class="size-20 rounded-full border-4 border-white object-cover " src="/images/profile.jpg"
-                        alt="Profile"><!-- Name and Location -->
-                    <div class="text-center px-4 py-2">
-                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
-                        <p class="text-xs text-gray-500">Gaylorside</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Testimonials Section -->
+        <!-- Testimonials Section -->
     <section class="py-16 px-4 max-w-7xl mx-auto">
         <div class="text-center">
             <h1 class="text-3xl font-bold text-center">
@@ -722,7 +783,7 @@
         </div>
 
         <!-- Testimonial Card -->
-        <div class="rounded-3xl overflow-hidden max-w-6xl mx-auto">
+        <div class="rounded-3xl overflow-hidden min-w-6xl mx-auto">
             <div class="flex flex-col lg:flex-row items-center">
                 <!-- Image Section -->
                 <div class="lg:w-1/2 p-8 lg:p-12">
@@ -733,58 +794,308 @@
                 </div>
 
                 <!-- Content Section -->
-                <div class="lg:w-1/2 p-8 lg:p-12">
-                    <!-- Review Badge -->
-                    <div class="flex items-center mb-6">
-                        <i class="fa fa-star text-orange-400 pr-4"></i>
-                        <span class="text-gray-600 font-medium">Review</span>
+                <section class="">
+                    <div class="w-full mx-auto max-w-xl flex flex-col justify-center py-24 relative p-8">
+                        <div class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+                        </div>
+                        <div class="mt-4 pt-8 max-w-xl mx-auto">
+                            <!-- Starts component -->
+                            <div class="flex flex-col w-full" x-data="{
+        skip: 1,
+        atBeginning: false,
+        atEnd: false,
+        next() {
+            this.to((current, offset) => current + (offset * this.skip))
+        },
+        prev() {
+            this.to((current, offset) => current - (offset * this.skip))
+        },
+        to(strategy) {
+            let slider = this.$refs.slider
+            let current = slider.scrollLeft
+            let offset = slider.firstElementChild.getBoundingClientRect().width
+            slider.scrollTo({ left: strategy(current, offset), behavior: 'smooth' })
+        },
+        focusableWhenVisible: {
+            'x-intersect:enter'() {
+                this.$el.removeAttribute('tabindex')
+            },
+            'x-intersect:leave'() {
+                this.$el.setAttribute('tabindex', '-1')
+            },
+        },
+        disableNextAndPreviousButtons: {
+            'x-intersect:enter.threshold.05'() {
+                let slideEls = this.$el.parentElement.children
+                // If this is the first slide.
+                if (slideEls[0] === this.$el) {
+                    this.atBeginning = true
+                // If this is the last slide.
+                } else if (slideEls[slideEls.length-1] === this.$el) {
+                    this.atEnd = true
+                }
+            },
+            'x-intersect:leave.threshold.05'() {
+                let slideEls = this.$el.parentElement.children
+                // If this is the first slide.
+                if (slideEls[0] === this.$el) {
+                    this.atBeginning = false
+                // If this is the last slide.
+                } else if (slideEls[slideEls.length-1] === this.$el) {
+                    this.atEnd = false
+                }
+            },
+        },
+    }">
+                                <div class="flex flex-col w-full" aria-labelledby="carousel-label" role="region"
+                                    tabindex="0" x-on:keydown.left="prev" x-on:keydown.right="next">
+                                    <h2 class="sr-only" hidden="" id="carousel-label">
+                                        Carousel
+                                    </h2>
+                                    <span class="sr-only" hidden="" id="carousel-content-label">Carousel</span>
+                                    <div class="items-center inline-flex lg:px-2 space-x-2">
+                                        <button
+                                            class="bg-orange-500 hover:bg-orange-600 size-8 flex focus:bg-orange-400 rounded-full items-center text-white opacity-50"
+                                            :class="{ 'opacity-50 ': atBeginning }" :aria-disabled="atBeginning"
+                                            :tabindex="atEnd ? -1 : 0" x-on:click="prev" tabindex="0"
+                                            aria-disabled="true">
+                                            <span aria-hidden="true" class="mx-auto"> ← </span><span
+                                                class="sr-only">Skip to previous slide page</span>
+                                        </button>
+                                        <button
+                                            class="bg-orange-500 hover:bg-orange-600 size-8 flex focus:bg-orange-400 rounded-full items-center text-white"
+                                            :class="{ 'opacity-50 ': atEnd }" :aria-disabled="atEnd"
+                                            :tabindex="atEnd ? -1 : 0" x-on:click="next" tabindex="0">
+                                            <span aria-hidden="true" class="mx-auto"> → </span><span
+                                                class="sr-only">Skip to next slide page</span>
+                                        </button>
+                                    </div>
+                                    <ul class="flex gap-3 overflow-x-scroll mt-4 scrollbar-hide snap-mandatory snap-x w-full rounded-2xl"
+                                        role="listbox" aria-labelledby="carousel-content-label" tabindex="0"
+                                        x-ref="slider">
+                                        <li class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-white"
+                                            role="option" x-bind="disableNextAndPreviousButtons">
+                                            <figure>
+                                                <div class="max-w-2xl">
+                                                    <div class="flex flex-col gap-12">
+                                                        <p class="text-base text-gray-900 font-display text-balance">
+                                                            "I've been using this services for years, and
+                                                            they consistently exceed my expectations. The
+                                                            support team is fantastic! "
+                                                        </p>
+                                                        <div class="block flex-shrink-0">
+                                                            <div class="flex items-center">
+                                                                <div>
+                                                                    <img class="inline-block h-9 w-9 rounded-full object-cover object-center"
+                                                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&amp;w=2960&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                        alt="" />
+                                                                </div>
+                                                                <div class="ml-3">
+                                                                    <p class="text-sm font-medium text-gray-700">
+                                                                        Pepe Madrid
+                                                                    </p>
+                                                                    <p class="text-xs font-medium text-gray-500">
+                                                                        CEO of Something INC
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </figure>
+                                        </li>
+                                        <li class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-gray-50"
+                                            role="option" x-bind="disableNextAndPreviousButtons">
+                                            <figure>
+                                                <div class="max-w-2xl">
+                                                    <div class="flex flex-col gap-12">
+                                                        <p class="text-base text-gray-900 font-display text-balance">
+                                                            "The financial solutions they offer are
+                                                            top-notch. I've seen significant growth in my
+                                                            investments since I started using their
+                                                            platform. "
+                                                        </p>
+                                                        <div class="block flex-shrink-0">
+                                                            <div class="flex items-center">
+                                                                <div>
+                                                                    <img class="inline-block h-9 w-9 rounded-full object-cover object-center"
+                                                                        src="https://alfred.lexingtonthemes.com/avatar1.png"
+                                                                        alt="" />
+                                                                </div>
+                                                                <div class="ml-3">
+                                                                    <p class="text-sm font-medium text-gray-700">
+                                                                        Michael Andreuzza
+                                                                    </p>
+                                                                    <p class="text-xs font-medium text-gray-500">
+                                                                        CEO of Something INC
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </figure>
+                                        </li>
+                                        <li class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-white"
+                                            role="option" x-bind="disableNextAndPreviousButtons">
+                                            <figure>
+                                                <div class="max-w-2xl">
+                                                    <div class="flex flex-col gap-12">
+                                                        <p class="text-base text-gray-900 font-display text-balance">
+                                                            "Their customer service is unparalleled. They
+                                                            really go the extra mile to ensure customer
+                                                            satisfaction. "
+                                                        </p>
+                                                        <div class="block flex-shrink-0">
+                                                            <div class="flex items-center">
+                                                                <div>
+                                                                    <img class="inline-block h-9 w-9 rounded-full object-cover object-center"
+                                                                        src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&amp;w=2940&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                        alt="" />
+                                                                </div>
+                                                                <div class="ml-3">
+                                                                    <p class="text-sm font-medium text-gray-700">
+                                                                        Fernando Pio
+                                                                    </p>
+                                                                    <p class="text-xs font-medium text-gray-500">
+                                                                        CEO of Something INC
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Ends component -->
+                        </div>
                     </div>
+                </section>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Testimonial Text -->
-                    <blockquote class="text-xl lg:text-xl text-gray-700 leading-relaxed mb-8">
-                        A fantastic experience from start to finish! The team made our
-                        trip effortless and memorable with their excellent service and
-                        attention to detail. Highly recommend for hassle-free travel
-                        planning!
-                    </blockquote>
+    <!-- Host Section -->
+    <section class="max-w-6xl mx-auto px-4 py-16">
+        <!-- Section Title -->
+        <h2 class="text-3xl font-bold text-center mb-12">
+            Best Hosts of the Month
+        </h2>
 
-                    <!-- Client Info and Rating -->
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h4 class="text-lg font-bold text-gray-900">Mohammad Madhu</h4>
-                            <p class="text-gray-600">CEO of XYZ Company</p>
-                        </div>
+        <!-- Hosts Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+            <div class="bg-white rounded-xl max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
+                <!-- Top Image with Rating Badge -->
+                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
+                    <div
+                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
+                        <i class="fa fa-star text-orange-400"></i> 4.9
+                    </div>
+                </div>
 
-                        <!-- Star Rating -->
-                        <div class="flex items-center space-x-1">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
+                <!-- Profile Image (Overlapping) -->
+                <div
+                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
+                    <img class="size-20 rounded-full border-4 border-white object-cover" src="/images/profile.jpg"
+                        alt="Profile" /><!-- Name and Location -->
+                    <div class="text-center px-4 py-2">
+                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
+                        <p class="text-xs text-gray-500">Gaylorside</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
+                <!-- Top Image with Rating Badge -->
+                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
+                    <div
+                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
+                        <i class="fa fa-star text-orange-400"></i> 4.9
+                    </div>
+                </div>
+
+                <!-- Profile Image (Overlapping) -->
+                <div
+                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
+                    <img class="size-20 rounded-full border-4 border-white object-cover" src="/images/profile.jpg"
+                        alt="Profile" /><!-- Name and Location -->
+                    <div class="text-center px-4 py-2">
+                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
+                        <p class="text-xs text-gray-500">Gaylorside</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
+                <!-- Top Image with Rating Badge -->
+                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
+                    <div
+                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
+                        <i class="fa fa-star text-orange-400"></i> 4.9
+                    </div>
+                </div>
+
+                <!-- Profile Image (Overlapping) -->
+                <div
+                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
+                    <img class="size-20 rounded-full border-4 border-white object-cover" src="/images/profile.jpg"
+                        alt="Profile" /><!-- Name and Location -->
+                    <div class="text-center px-4 py-2">
+                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
+                        <p class="text-xs text-gray-500">Gaylorside</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl max-w-xs h-72 relative border-1 border-gray-900/20 pb-6">
+                <!-- Top Image with Rating Badge -->
+                <div class="h-2/3 bg-cover bg-center rounded-t-xl" style="background-image: url('/images/beach.jpg')">
+                    <div
+                        class="absolute top-2 left-2 bg-white text-xs font-medium text-gray-800 px-2 py-1 rounded-full flex items-center gap-1 shadow">
+                        <i class="fa fa-star text-orange-400"></i> 4.9
+                    </div>
+                </div>
+
+                <!-- Profile Image (Overlapping) -->
+                <div
+                    class="flex flex-col justify-center items-center -mt-10 absolute w-full left-1/2 transform -translate-x-1/2">
+                    <img class="size-20 rounded-full border-4 border-white object-cover" src="/images/profile.jpg"
+                        alt="Profile" /><!-- Name and Location -->
+                    <div class="text-center px-4 py-2">
+                        <h3 class="text-md font-semibold text-gray-900">Guy Hawkins</h3>
+                        <p class="text-xs text-gray-500">Gaylorside</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Navigation Arrows -->
-        <div class="flex justify-center items-center space-x-4">
-            <button class="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 group">
-                <svg class="w-6 h-6 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button
-                class="p-3 rounded-full bg-orange-500 shadow-lg hover:shadow-xl hover:bg-orange-600 transition-all duration-300 group">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-        </div>
+        <!-- Examples Host -->
+        <section class="overflow-hidden">
+            <div
+                class="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center">
+                <div class="flex flex-col sm:flex-row mx-auto">
+                    <!--- Starts component --> 
+                    <a href="#_"> <img
+                            src="https://images.unsplash.com/photo-1530035415911-95194de4ebcc?q=80&amp;w=2670&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="rounded-xl  rotate-6 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom"
+                            alt="#_"> </a><a href="#_"> <img
+                            src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&amp;w=2672&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D "
+                            class="rounded-xl  -rotate-12 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom"
+                            alt="#_"> </a><a href="#_"> <img
+                            src="https://images.unsplash.com/photo-1586996292898-71f4036c4e07?q=80&amp;w=2670&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="rounded-xl  rotate-6 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom"
+                            alt="#_"> </a><a href="#_"> <img
+                            src="https://images.unsplash.com/photo-1522775417749-29284fb89f43?q=80&amp;w=2574&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="rounded-xl  -rotate-12 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom"
+                            alt="#_"> </a>
+                    <!--- Ends component -->
+                </div>
+            </div>
+        </section>
+        <!-- End of examples Host -->
     </section>
 
+    <!-- Join Us Section -->
     <section class="relative py-20 px-4 min-h-screen flex items-center justify-center">
         <!-- Background Images -->
         <!-- Left side images -->
@@ -820,13 +1131,6 @@
                     alt="Beach traveler" class="w-full h-full object-cover" />
             </div>
         </div>
-
-        <!-- Cursor pointer -->
-        <!-- <div class="cursor-pointer">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.5 3V2C8.5 1.44772 8.94772 1 9.5 1C10.0523 1 10.5 1.44772 10.5 2V3H13.5V2C13.5 1.44772 13.9477 1 14.5 1C15.0523 1 15.5 1.44772 15.5 2V3H17.5C18.6046 3 19.5 3.89543 19.5 5V17L12.5 12L5.5 17V5C5.5 3.89543 6.39543 3 7.5 3H8.5Z" fill="#374151"/>
-            </svg>
-        </div> -->
 
         <!-- Central Content -->
         <div class="relative z-10 text-center max-w-2xl mx-auto px-4">
@@ -950,13 +1254,6 @@
                     class="text-8xl md:text-9xl lg:text-[12rem] xl:text-[7rem] font-black text-gray-900 leading-none select-none">
                     Travelly
                 </h2>
-
-                <!-- Cursor Pointer -->
-                <!-- <div class="cursor-pointer">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.5 3V2C8.5 1.44772 8.94772 1 9.5 1C10.0523 1 10.5 1.44772 10.5 2V3H13.5V2C13.5 1.44772 13.9477 1 14.5 1C15.0523 1 15.5 1.44772 15.5 2V3H17.5C18.6046 3 19.5 3.89543 19.5 5V17L12.5 12L5.5 17V5C5.5 3.89543 6.39543 3 7.5 3H8.5Z" fill="#374151"/>
-                    </svg>
-                </div> -->
             </div>
 
             <!-- Footer Bottom -->
@@ -1062,8 +1359,78 @@
                 this.parentNode.classList.remove("ring-2", "ring-orange-500");
             });
         });
-    </script>
 
+        // Slide Card Carousel
+        function carousel() {
+            return {
+                currentSlide: 0,
+                visibleSlides: 1,
+                slidePercentage: 100,
+                slides: [
+                    {
+                        id: 1,
+                        image: 'https://picsum.photos/id/10/800/600',
+                        title: ' Nature 1',
+                        description: 'Nature first'
+                    },
+                    {
+                        id: 2,
+                        image: 'https://picsum.photos/id/11/800/600',
+                        title: 'Nature 2',
+                        description: 'Nature second'
+                    },
+                    {
+                        id: 3,
+                        image: 'https://picsum.photos/id/12/800/600',
+                        title: 'Nature 3',
+                        description: 'Nature 3th'
+                    },
+                    {
+                        id: 4,
+                        image: 'https://picsum.photos/id/13/800/600',
+                        title: 'Nature 4',
+                        description: 'Nature last'
+                    }
+                ],
+                init() {
+                    this.updateVisibleSlides();
+                    window.addEventListener('resize', () => {
+                        this.updateVisibleSlides();
+                    });
+                },
+                updateVisibleSlides() {
+                    if (window.innerWidth < 768) {
+                        this.visibleSlides = 1;
+                        this.slidePercentage = 100;
+                    } else {
+                        this.visibleSlides = 3;
+                        this.slidePercentage = 100 / 3;
+                    }
+                },
+                next() {
+                    if (this.currentSlide < this.slides.length - this.visibleSlides) {
+                        this.currentSlide += 1;
+                    }
+                },
+                prev() {
+                    if (this.currentSlide > 0) {
+                        this.currentSlide -= 1;
+                    }
+                },
+                goTo(index) {
+                    if (index <= this.slides.length - this.visibleSlides) {
+                        this.currentSlide = index;
+                    } else {
+                        this.currentSlide = this.slides.length - this.visibleSlides;
+                    }
+                },
+                handleImageError(slide) {
+                    // Fallback obrázok ak sa pôvodný nepodarí načítať
+                    slide.image = 'https://picsum.photos/id/20/800/600';
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
